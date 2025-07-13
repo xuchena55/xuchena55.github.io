@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>访问通道自主授权激活</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 全局变量 */
+        :root {
+            --primary-color: #00FFFF;
+            --secondary-color: #6C757D;
+            --background-color: #0A0F1B;
+            --text-color: #F0F8FF;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glow-color: rgba(0, 255, 255, 0.3);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* 全局样式 */
+        body {
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            background: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 背景动态光影效果 */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 60%);
+            animation: background-shift 30s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes background-shift {
+            0% {
+                transform: translate(-20%, -20%) rotate(0deg);
+            }
+            100% {
+                transform: translate(20%, 20%) rotate(360deg);
+            }
+        }
+
+        /* 容器样式 - 玻璃拟态 */
+       .container {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 8px 32px 0 var(--shadow-color), 0 0 40px 0 var(--glow-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: fade-in 0.6s ease-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 标题样式 */
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        /* 协议提示样式 */
+       .protocol {
+            font-size: 16px;
+            margin-bottom: 32px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* 步骤列表样式 */
+       .steps {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 32px;
+        }
+
+       .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px 0 var(--shadow-color);
+            position: relative;
+        }
+
+       .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+       .step:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+       .step:hover::before {
+            opacity: 1;
+        }
+
+       .step-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-right: 16px;
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+       .step-description {
+            text-align: left;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        /* 按钮样式 */
+       .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+       .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+       .btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+       .btn:hover::before {
+            opacity: 1;
+        }
+
+       .btn-primary {
+            background: var(--primary-color);
+            color: var(--background-color);
+            box-shadow: 0 0 20px 0 var(--primary-color);
+        }
+
+       .btn-primary:hover {
+            background: #00E5E5;
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px 0 var(--primary-color);
+        }
+
+       .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: 0 0 10px 0 var(--primary-color);
+        }
+
+       .btn-secondary:hover {
+            background: rgba(0, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px 0 var(--primary-color);
+        }
+
+        /* 音乐控制按钮样式 */
+       .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+       .music-control:hover {
+            transform: scale(1.1);
+        }
+
+       .music-control.playing {
+            animation: rotate 5s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 音乐图标 */
+       .music-icon {
+            width: 24px;
+            height: 24px;
+            fill: #ff6b6b;
+        }
+
+        /* 移动端适配 */
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 28px;
+            }
+            
+           .music-control {
+                width: 35px;
+                height: 35px;
+                top: 15px;
+                right: 15px;
+            }
+
+           .music-icon {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* 自定义提示弹窗样式 */
+       .custom-alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--text-color);
+            padding: 16px 32px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px 0 var(--shadow-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            animation: slide-down 0.3s ease-out;
+        }
+
+        @keyframes slide-down {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -20px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 音乐控制按钮 -->
+    <div class="music-control" onclick="toggleMusic()">
+        <svg class="music-icon" viewBox="0 0 24 24">
+            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+    </div>
+
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop>
+        <source src="./体面dj.mp3" type="audio/mpeg">
+        <source src="体面dj.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="container">
+        <h1>娱乐通道已授权</h1>
+        <p class="protocol">检测到环境限制，请根据以下操作在浏览器打开</p>
+        <ul class="steps">
+            <li class="step">
+                <span class="step-number">1</span>
+                <span class="step-description">点击下方 <strong style="color: var(--primary-color)">复制链接</strong> 复制成功后</span>
+            </li>
+            <li class="step">
+                <span class="step-number">2</span>
+                <span class="step-description">打开手机 <strong style="color: var(--primary-color)">[任意浏览器]</strong> 粘帖</span>
+            </li>
+            <li class="step">
+                <span class="step-number">3</span>
+                <span class="step-description">在浏览器网址输入复制的链接即可进入</span>
+            </li>
+        </ul>
+        <div class="actions">
+            <button class="btn btn-primary" onclick="openInBrowser()">操作提示</button>
+            <button class="btn btn-secondary" onclick="copyUrl()">复制链接</button>
+        </div>
+    </div>
+
+    <script>
+        // 目标链接
+        const targetUrl = "http://login-s4d-f4s6d-f4s-d4.uikkai.cn";
+        
+        // 音乐控制
+        const audio = document.getElementById('bgMusic');
+        const musicControl = document.querySelector('.music-control');
+        let isPlaying = false;
+
+        // 音频播放处理
+        async function playAudio() {
+            try {
+                // 淡入效果
+                audio.volume = 0;
+                await audio.play();
+                isPlaying = true;
+                musicControl.classList.add('playing');
+                
+                // 音量渐变
+                let vol = 0;
+                const fadeIn = setInterval(() => {
+                    if (vol < 1) {
+                        vol += 0.1;
+                        audio.volume = Math.min(vol, 1);
+                    } else {
+                        clearInterval(fadeIn);
+                    }
+                }, 200);
+            } catch (err) {
+                console.log("播放失败:", err);
+            }
+        }
+
+        // 初始化音频播放
+        function initAudioPlay() {
+            // 尝试自动播放
+            playAudio();
+            
+            // 页面可见性变化时尝试播放
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden &&!isPlaying) {
+                    playAudio();
+                }
+            });
+            
+            // 用户交互时触发播放
+            const userInteractions = ['click', 'touchstart', 'keydown'];
+            userInteractions.forEach(event => {
+                document.addEventListener(event, () => {
+                    if (!isPlaying) {
+                        playAudio();
+                    }
+                }, { once: true });
+            });
+        }
+
+        // 页面加载完成后初始化
+        window.addEventListener('load', initAudioPlay);
+
+        // 切换音乐播放状态
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                musicControl.classList.remove('playing');
+            } else {
+                audio.play().then(() => {
+                    musicControl.classList.add('playing');
+                });
+            }
+            isPlaying =!isPlaying;
+        }
+
+        // 打开浏览器提示
+        function openInBrowser() {
+            const ua = navigator.userAgent.toLowerCase();
+            const isWechat = ua.includes('micromessenger');
+            const isIOS = /iphone|ipad|ipod/.test(ua);
+
+            if (isWechat && isIOS) {
+                showCustomAlert('请点击下方 <span style="color: var(--primary-color)">复制链接</span> 按钮<br>"在手机任意浏览器打开即可"');
+            } else if (isWechat) {
+                // 微信安卓端提示
+                showCustomAlert('请点击右上角菜单，选择"在浏览器中打开"');
+            } else {
+                // 非微信环境直接跳转
+                window.location.href = targetUrl;
+            }
+        }
+
+        // 复制链接
+        async function copyUrl() {
+            try {
+                await navigator.clipboard.writeText(targetUrl);
+                showCustomAlert('✅ 链接已复制到剪贴板<br>可粘贴到任意浏览器中打开');
+            } catch (err) {
+                // 兼容旧浏览器
+                const textarea = document.createElement('textarea');
+                textarea.value = targetUrl;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showCustomAlert('✅ 链接已复制到剪贴板');
+            }
+        }
+
+        // 显示自定义提示
+        function showCustomAlert(message) {
+            // 移除已存在的提示
+            const existingAlert = document.querySelector('.custom-alert');
+            if (existingAlert) {
+                existingAlert.remove();
+            }
+            
+            // 创建新提示
+            const alertBox = document.createElement('div');
+            alertBox.classList.add('custom-alert');
+            alertBox.innerHTML = message;
+            document.body.appendChild(alertBox);
+            
+            // 3秒后自动移除
+            setTimeout(() => {
+                alertBox.remove();
+            }, 3000);
+        }
+    </script>
+    
+</body>
+
+</html>
