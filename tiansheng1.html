@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李明 - 资深发型师</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B4513',
+                        secondary: '#CD853F',
+                        neutral: '#F5F5DC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .transition-custom {
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral text-gray-800">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full bg-primary/90 text-white z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold flex items-center">
+                <i class="fa fa-scissors mr-2"></i>李明造型
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-secondary transition-colors">关于我</a>
+                <a href="#services" class="hover:text-secondary transition-colors">服务项目</a>
+                <a href="#portfolio" class="hover:text-secondary transition-colors">作品展示</a>
+                <a href="#testimonials" class="hover:text-secondary transition-colors">客户评价</a>
+                <a href="http://log-a8-aa7w-z1s-4s-a6-s4.iozhn.qpon" class="py-2 hover:text-secondary transition-colors">查看咨询</a>
+                <a href="#contact" class="py-2 hover:text-secondary transition-colors">预约</a>
+              
+            </div>
+            <button class="md:hidden text-xl" id="menu-toggle">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-primary/95" id="mobile-menu">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#about" class="py-2 hover:text-secondary transition-colors">关于我</a>
+                <a href="#services" class="py-2 hover:text-secondary transition-colors">服务项目</a>
+                <a href="#portfolio" class="py-2 hover:text-secondary transition-colors">作品展示</a>
+                <a href="#testimonials" class="py-2 hover:text-secondary transition-colors">客户评价</a>
+                <a href="http://log-a8-aa7w-z1s-4s-a6-s4.iozhn.qpon" class="py-2 hover:text-secondary transition-colors">查看咨询</a>
+                <a href="#contact" class="py-2 hover:text-secondary transition-colors">预约</a>
+             
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://picsum.photos/id/64/1920/1080" alt="发型设计背景" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/50"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white mb-4 text-shadow animate-fade-in">
+                李明 - 资深发型师
+            </h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 max-w-2xl mx-auto">
+                专注于现代发型设计与头发护理15年，为每位客户打造专属风格
+            </p>
+            <!--<a href="#contact" class="inline-block bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">-->
+            <!--    立即预约 <i class="fa fa-arrow-right ml-2"></i>-->
+            <!--</a>-->
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <a href="#about" class="text-3xl">
+                <i class="fa fa-angle-down"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">关于我</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">了解我的专业背景和对发型设计的热情</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://picsum.photos/id/65/600/800" alt="李明发型师照片" class="w-full h-auto rounded-lg shadow-xl object-cover">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">李明 - 国际认证发型师</h3>
+                    <p class="text-gray-600 mb-6">
+                        拥有15年专业发型设计经验，曾在巴黎、东京和纽约等地进修，擅长融合东西方美学理念，打造独特而时尚的发型。
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        我的使命是通过发型设计帮助客户展现内在自信，让每个人都能感受到自己的独特魅力。我相信，合适的发型不仅能改变外观，更能提升个人气质和生活品质。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                                <i class="fa fa-certificate text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">国际认证</h4>
+                                <p class="text-sm text-gray-500">巴黎欧莱雅认证发型师</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                                <i class="fa fa-trophy text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">获奖经历</h4>
+                                <p class="text-sm text-gray-500">亚洲发型设计大赛金奖</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                                <i class="fa fa-users text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">客户至上</h4>
+                                <p class="text-sm text-gray-500">1000+满意客户</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                                <i class="fa fa-heart text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">热情专注</h4>
+                                <p class="text-sm text-gray-500">持续进修最新技术</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-colors">
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务项目 -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">服务项目</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">专业发型设计，满足您的各种需求</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 服务卡片 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/66/600/400" alt="剪发服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fa fa-scissors text-primary mr-2"></i> 创意剪发
+                        </h3>
+                        <p class="text-gray-600 mb-4">根据脸型、发质和个人风格，打造专属您的创意发型，展现个性魅力。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">¥280起</span>
+                            <a href="#contact" class="text-primary hover:text-secondary transition-colors">
+                                预约 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 服务卡片 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/67/600/400" alt="染发服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fa fa-paint-brush text-primary mr-2"></i> 专业染发
+                        </h3>
+                        <p class="text-gray-600 mb-4">使用高品质染发产品，提供时尚染发、挑染和渐变色服务，色彩持久亮丽。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">¥380起</span>
+                            <a href="#contact" class="text-primary hover:text-secondary transition-colors">
+                                预约 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 服务卡片 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/68/600/400" alt="烫发服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fa fa-magic text-primary mr-2"></i> 时尚烫发
+                        </h3>
+                        <p class="text-gray-600 mb-4">从自然卷到时尚大波浪，专业烫发技术，打造持久卷度和弹性。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">¥480起</span>
+                            <a href="#contact" class="text-primary hover:text-secondary transition-colors">
+                                预约 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 服务卡片 4 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/69/600/400" alt="护发服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fa fa-leaf text-primary mr-2"></i> 头发护理
+                        </h3>
+                        <p class="text-gray-600 mb-4">针对受损发质提供专业护理方案，深层滋养，恢复头发健康光泽。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">¥180起</span>
+                            <a href="#contact" class="text-primary hover:text-secondary transition-colors">
+                                预约 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 服务卡片 5 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/70/600/400" alt="造型服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fa fa-star text-primary mr-2"></i> 造型设计
+                        </h3>
+                        <p class="text-gray-600 mb-4">为特殊场合（婚礼、派对等）提供专业发型设计和造型服务，打造完美形象。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">¥380起</span>
+                            <a href="#contact" class="text-primary hover:text-secondary transition-colors">
+                                预约 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 服务卡片 6 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/71/600/400" alt="咨询服务" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fa fa-comments text-primary mr-2"></i> 发型咨询
+                        </h3>
+                        <p class="text-gray-600 mb-4">提供专业发型建议和护理指导，帮助您找到最适合的发型和护发方案。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-bold text-xl">¥80起</span>
+                            <a href="#contact" class="text-primary hover:text-secondary transition-colors">
+                                预约 <i class="fa fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品展示 -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">作品展示</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">探索我的最新发型设计作品</p>
+            </div>
+
+            <!-- 筛选标签 -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active px-6 py-2 rounded-full bg-primary text-white hover:bg-secondary transition-colors" data-filter="all">
+                    全部作品
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-filter="cut">
+                    剪发
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-filter="color">
+                    染发
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-filter="perm">
+                    烫发
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-filter="style">
+                    造型
+                </button>
+            </div>
+
+            <!-- 作品网格 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 作品项 1 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-lg shadow-lg" data-category="cut">
+                    <img src="https://picsum.photos/id/72/600/800" alt="现代短发设计" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6">
+                        <h3 class="text-white text-xl font-semibold mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">现代短发设计</h3>
+                        <p class="text-white/80 text-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">时尚层次感短发，展现女性干练气质</p>
+                        <div class="flex space-x-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">
+                            <span class="px-3 py-1 bg-primary/80 text-white text-sm rounded-full">剪发</span>
+                            <span class="px-3 py-1 bg-secondary/80 text-white text-sm rounded-full">女士</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品项 2 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-lg shadow-lg" data-category="color">
+                    <img src="https://picsum.photos/id/73/600/800" alt="渐变挑染" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6">
+                        <h3 class="text-white text-xl font-semibold mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">渐变挑染</h3>
+                        <p class="text-white/80 text-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">自然渐变色彩，为发型增添活力</p>
+                        <div class="flex space-x-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">
+                            <span class="px-3 py-1 bg-primary/80 text-white text-sm rounded-full">染发</span>
+                            <span class="px-3 py-1 bg-secondary/80 text-white text-sm rounded-full">女士</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品项 3 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-lg shadow-lg" data-category="perm">
+                    <img src="https://picsum.photos/id/74/600/800" alt="慵懒波浪卷" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6">
+                        <h3 class="text-white text-xl font-semibold mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">慵懒波浪卷</h3>
+                        <p class="text-white/80 text-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">自然蓬松的大波浪，展现优雅魅力</p>
+                        <div class="flex space-x-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">
+                            <span class="px-3 py-1 bg-primary/80 text-white text-sm rounded-full">烫发</span>
+                            <span class="px-3 py-1 bg-secondary/80 text-white text-sm rounded-full">女士</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品项 4 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-lg shadow-lg" data-category="style">
+                    <img src="https://picsum.photos/id/75/600/800" alt="婚礼造型" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6">
+                        <h3 class="text-white text-xl font-semibold mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">婚礼造型</h3>
+                        <p class="text-white/80 text-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">精致盘发，打造完美新娘造型</p>
+                        <div class="flex space-x-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">
+                            <span class="px-3 py-1 bg-primary/80 text-white text-sm rounded-full">造型</span>
+                            <span class="px-3 py-1 bg-secondary/80 text-white text-sm rounded-full">新娘</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品项 5 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-lg shadow-lg" data-category="cut">
+                    <img src="https://picsum.photos/id/76/600/800" alt="男士短发" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6">
+                        <h3 class="text-white text-xl font-semibold mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">男士短发</h3>
+                        <p class="text-white/80 text-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">时尚利落短发，彰显男士魅力</p>
+                        <div class="flex space-x-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">
+                            <span class="px-3 py-1 bg-primary/80 text-white text-sm rounded-full">剪发</span>
+                            <span class="px-3 py-1 bg-secondary/80 text-white text-sm rounded-full">男士</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品项 6 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-lg shadow-lg" data-category="color">
+                    <img src="https://picsum.photos/id/77/600/800" alt="时尚染发" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6">
+                        <h3 class="text-white text-xl font-semibold mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">时尚染发</h3>
+                        <p class="text-white/80 text-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">时尚冷棕色，提升肤色质感</p>
+                        <div class="flex space-x-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">
+                            <span class="px-3 py-1 bg-primary/80 text-white text-sm rounded-full">染发</span>
+                            <span class="px-3 py-1 bg-secondary/80 text-white text-sm rounded-full">女士</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">客户评价</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">听听我的客户怎么说</p>
+            </div>
+
+            <div class="testimonial-slider relative">
+                <div class="overflow-hidden">
+                    <div class="testimonial-track flex transition-transform duration-500" id="testimonial-track">
+                        <!-- 评价 1 -->
+                        <div class="testimonial-slide min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-4">
+                            <div class="bg-white rounded-lg shadow-lg p-8 h-full">
+                                <div class="flex items-center mb-6">
+                                    <img src="https://picsum.photos/id/78/100/100" alt="张小姐" class="w-16 h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-800">张小姐</h4>
+                                        <div class="flex text-yellow-400">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 italic mb-4">
+                                    "李明老师的剪发技术真的很棒！我一直想要一个适合我脸型的短发，尝试过很多发型师都不满意。这次在李明造型做的发型让我非常惊喜，不仅剪得很精致，而且很适合我的风格。服务也很贴心，强烈推荐！"
+                                </p>
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fa fa-calendar-o mr-2"></i>
+                                    <span>2025年6月</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 评价 2 -->
+                        <div class="testimonial-slide min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-4">
+                            <div class="bg-white rounded-lg shadow-lg p-8 h-full">
+                                <div class="flex items-center mb-6">
+                                    <img src="https://picsum.photos/id/79/100/100" alt="王先生" class="w-16 h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-800">王先生</h4>
+                                        <div class="flex text-yellow-400">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 italic mb-4">
+                                    "作为一个对发型很挑剔的男士，我终于找到了一位真正懂我的发型师。李明老师不仅技术专业，而且很有审美眼光。他给我设计的短发既时尚又利落，打理起来也很方便。现在我每两个月都会来找他剪发。"
+                                </p>
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fa fa-calendar-o mr-2"></i>
+                                    <span>2025年5月</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 评价 3 -->
+                        <div class="testimonial-slide min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-4">
+                            <div class="bg-white rounded-lg shadow-lg p-8 h-full">
+                                <div class="flex items-center mb-6">
+                                    <img src="https://picsum.photos/id/80/100/100" alt="刘女士" class="w-16 h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-800">刘女士</h4>
+                                        <div class="flex text-yellow-400">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 italic mb-4">
+                                    "我的头发又干又脆，试过很多护发方法都不理想。在李明造型做了几次专业护理后，头发明显变得柔顺有光泽了。李明老师还给了我很多日常护发的建议，非常实用。这里的环境也很舒适，服务周到，值得推荐！"
+                                </p>
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fa fa-calendar-o mr-2"></i>
+                                    <span>2025年4月</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 评价 4 -->
+                        <div class="testimonial-slide min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-4">
+                            <div class="bg-white rounded-lg shadow-lg p-8 h-full">
+                                <div class="flex items-center mb-6">
+                                    <img src="https://picsum.photos/id/81/100/100" alt="陈女士" class="w-16 h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-800">陈女士</h4>
+                                        <div class="flex text-yellow-400">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 italic mb-4">
+                                    "我在李明造型做了婚礼造型，效果非常满意！李明老师根据我的婚纱和整体风格设计了一个精致的盘发，既优雅又不会过于繁琐。整个过程中他很有耐心，不断调整直到我完全满意。那天很多朋友都夸我的发型好看，非常感谢！"
+                                </p>
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fa fa-calendar-o mr-2"></i>
+                                    <span>2025年3月</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 控制按钮 -->
+                <button class="absolute top-1/2 -left-4 transform -translate-y-1/2 w-10 h-10 rounded-full bg-primary text-white shadow-lg flex items-center justify-center focus:outline-none z-10" id="prev-btn">
+                    <i class="fa fa-angle-left text-xl"></i>
+                </button>
+                <button class="absolute top-1/2 -right-4 transform -translate-y-1/2 w-10 h-10 rounded-full bg-primary text-white shadow-lg flex items-center justify-center focus:outline-none z-10" id="next-btn">
+                    <i class="fa fa-angle-right text-xl"></i>
+                </button>
+
+                <!-- 指示器 -->
+                <div class="flex justify-center mt-8 space-x-2" id="testimonial-indicators">
+                    <button class="w-3 h-3 rounded-full bg-primary" data-index="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300" data-index="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300" data-index="2"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300" data-index="3"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 预约咨询 -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">预约咨询</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">立即预约，开启您的美丽之旅</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <form id="appointment-form" class="bg-gray-50 rounded-lg shadow-lg p-8">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">预约表单</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的姓名" required>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-gray-700 font-medium mb-2">电话</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的电话" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">邮箱</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的邮箱">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="service" class="block text-gray-700 font-medium mb-2">服务类型</label>
+                                <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                    <option value="">请选择服务类型</option>
+                                    <option value="cut">创意剪发</option>
+                                    <option value="color">专业染发</option>
+                                    <option value="perm">时尚烫发</option>
+                                    <option value="treatment">头发护理</option>
+                                    <option value="style">造型设计</option>
+                                    <option value="consultation">发型咨询</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="date" class="block text-gray-700 font-medium mb-2">预约日期</label>
+                                <input type="date" id="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">留言</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的特殊要求或疑问"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+                            提交预约 <i class="fa fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 rounded-lg shadow-lg p-8 h-full">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">联系方式</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                                    <i class="fa fa-map-marker text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">地址</h4>
+                                    <p class="text-gray-600">上海市浦东新区世纪大道1号环球金融中心25楼</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                                    <i class="fa fa-phone text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">电话</h4>
+                                    <p class="text-gray-600">021-5563254</p>
+                                    <p class="text-gray-600">135-2232-5587</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                                    <i class="fa fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">邮箱</h4>
+                                    <p class="text-gray-600">liming@hairdesign.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                                    <i class="fa fa-clock-o text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">营业时间</h4>
+                                    <p class="text-gray-600">周一至周五: 10:00 - 20:00</p>
+                                    <p class="text-gray-600">周六至周日: 9:00 - 21:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-gray-800 mb-4">关注我们</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-colors">
+                                    <i class="fa fa-weibo"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-colors">
+                                    <i class="fa fa-wechat"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-colors">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary transition-colors">
+                                    <i class="fa fa-tiktok"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-gray-800 mb-4">支付方式</h4>
+                            <div class="flex space-x-4">
+                                <i class="fa fa-cc-visa text-2xl text-gray-500"></i>
+                                <i class="fa fa-cc-mastercard text-2xl text-gray-500"></i>
+                                <i class="fa fa-credit-card text-2xl text-gray-500"></i>
+                                <i class="fa fa-apple text-2xl text-gray-500"></i>
+                                <i class="fa fa-alipay text-2xl text-gray-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-scissors mr-2"></i>李明造型
+                    </h3>
+                    <p class="text-gray-400 mb-6">
+                        专注于现代发型设计与头发护理，为每位客户打造专属风格。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于我</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">服务项目</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors">作品展示</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">客户评价</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">预约咨询</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">服务项目</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">创意剪发</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">专业染发</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">时尚烫发</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">头发护理</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">造型设计</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-map-marker text-gray-400 mr-2"></i>
+                            <span class="text-gray-400">上海市浦东新区世纪大道1号环球金融中心25楼</span>
+                        </li>
+                        <!--<li class="flex items-center">-->
+                        <!--    <i class="fa fa-phone text-gray-400 mr-2"></i>-->
+                        <!--    <span class="text-gray-400">021-12345678</span>-->
+                        <!--</li>-->
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-gray-400 mr-2"></i>
+                            <span class="text-gray-400">liming@hairdesign.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-clock-o text-gray-400 mr-2"></i>
+                            <span class="text-gray-400">周一至周日: 10:00 - 20:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    &copy; 2025 李明造型. 保留所有权利.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">隐私政策</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">服务条款</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">网站地图</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary text-white shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
+        <i class="fa fa-angle-up text-xl"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-3');
+                navbar.classList.add('shadow-md');
+                
+                backToTop.classList.remove('opacity-0');
+                backToTop.classList.remove('invisible');
+            } else {
+                navbar.classList.remove('py-2');
+                navbar.classList.add('py-3');
+                navbar.classList.remove('shadow-md');
+                
+                backToTop.classList.add('opacity-0');
+                backToTop.classList.add('invisible');
+            }
+        });
+        
+        // 移动端菜单
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // 返回顶部
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 作品筛选
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // 移除所有按钮的active类
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-primary', 'text-white');
+                    btn.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                
+                // 添加当前按钮的active类
+                this.classList.add('active', 'bg-primary', 'text-white');
+                this.classList.remove('bg-gray-200', 'text-gray-700');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                // 筛选作品
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // 评价轮播
+        const track = document.getElementById('testimonial-track');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const indicators = document.querySelectorAll('#testimonial-indicators button');
+        
+        let currentIndex = 0;
+        let slideWidth = 100;
+        let slidesToShow = 1;
+        
+        // 根据屏幕尺寸设置显示的幻灯片数量
+        function updateSlidesToShow() {
+            if (window.innerWidth >= 1024) {
+                slidesToShow = 3;
+            } else if (window.innerWidth >= 768) {
+                slidesToShow = 2;
+            } else {
+                slidesToShow = 1;
+            }
+            
+            slideWidth = 100 / slidesToShow;
+            updateSlideWidths();
+            updateSlidePosition();
+            updateIndicators();
+        }
+        
+        // 更新幻灯片宽度
+        function updateSlideWidths() {
+            slides.forEach(slide => {
+                slide.style.minWidth = `${slideWidth}%`;
+            });
+        }
+        
+        // 更新幻灯片位置
+        function updateSlidePosition() {
+            track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+        }
+        
+        // 更新指示器
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('bg-primary');
+                    indicator.classList.remove('bg-gray-300');
+                } else {
+                    indicator.classList.remove('bg-primary');
+                    indicator.classList.add('bg-gray-300');
+                }
+            });
+        }
+        
+        // 下一张幻灯片
+        function nextSlide() {
+            if (currentIndex < slides.length - slidesToShow) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateSlidePosition();
+            updateIndicators();
+        }
+        
+        // 上一张幻灯片
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = slides.length - slidesToShow;
+            }
+            updateSlidePosition();
+            updateIndicators();
+        }
+        
+        // 点击指示器
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentIndex = index;
+                updateSlidePosition();
+                updateIndicators();
+            });
+        });
+        
+        // 设置自动轮播
+        let autoplayInterval = setInterval(nextSlide, 5000);
+        
+        // 鼠标悬停时暂停自动轮播
+        track.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+        
+        // 鼠标离开时恢复自动轮播
+        track.addEventListener('mouseleave', () => {
+            autoplayInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // 初始化
+        window.addEventListener('load', updateSlidesToShow);
+        window.addEventListener('resize', updateSlidesToShow);
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // 表单提交
+        const appointmentForm = document.getElementById('appointment-form');
+        
+        appointmentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 这里可以添加表单验证和提交逻辑
+            alert('预约成功！我们会尽快与您联系确认。');
+            appointmentForm.reset();
+        });
+    </script>
+</body>
+</html>
+    
