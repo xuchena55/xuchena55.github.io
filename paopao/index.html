@@ -137,7 +137,48 @@
         <i class="fa fa-magic mr-2"></i> 生成防红链接
       </button>
     </div>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white rounded-xl shadow-custom p-8 text-center">
+        <h1 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-6">美化二维码</h1>
+        
+        <!-- 跳转按钮 - 基本样式 -->
+        <button id="basicButton" class="mt-4 px-6 py-3 bg-primary text-white rounded-lg font-medium btn-hover shadow-custom">
+            复制防红连接后点击这里去美化
+        </button>
+        
+        <!-- 跳转按钮 - 带图标 -->
+        <button id="iconButton" class="mt-6 px-6 py-3 bg-secondary text-white rounded-lg font-medium btn-hover shadow-custom flex items-center mx-auto">
+            <i class="fa fa-arrow-right mr-2"></i> 复制防红连接后点击这里美化
+        </button>
+        
+        <!-- 跳转按钮 - 强调样式 -->
+        <button id="fancyButton" class="mt-6 px-8 py-4 bg-accent text-white rounded-full font-semibold btn-hover shadow-custom transform hover:rotate-1 hover:bg-accent/90">
+            华丽跳转按钮
+        </button>
+        
+        <!--<p class="mt-8 text-gray-500 text-sm">-->
+        <!--    页面将跳转到 <a href="https://example.com" target="_blank" class="text-primary hover:underline">示例页面</a>-->
+        <!--</p>-->
+    </div>
 
+    <script>
+        // 获取按钮元素
+        const basicButton = document.getElementById('basicButton');
+        const iconButton = document.getElementById('iconButton');
+        const fancyButton = document.getElementById('fancyButton');
+        
+        // 定义跳转函数
+        function navigateToPage() {
+            // 这里修改为你想要跳转的页面URL
+            window.location.href = 'https://qrcode.itfox.net/';
+        }
+        
+        // 为按钮添加点击事件监听器
+        basicButton.addEventListener('click', navigateToPage);
+        iconButton.addEventListener('click', navigateToPage);
+        fancyButton.addEventListener('click', navigateToPage);
+    </script>
+ </body>
     <!-- 结果区域 -->
     <div id="result" class="hidden p-4 mx-3 mt-2 animate-fadeIn">
       <div class="bg-blue-50 border-l-4 border-primary p-4 rounded-lg mb-4">
